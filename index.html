@@ -15,7 +15,7 @@
 
     h1 {
       font-size: 3em;
-      margin-top: 100px;
+      margin-top: 80px;
       color: #ff1493;
       animation: pop 1s ease-in-out infinite alternate;
     }
@@ -43,6 +43,24 @@
       z-index: 100;
     }
 
+    #play-btn {
+      margin-top: 50px;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    #play-btn:hover {
+      background-color: #ff1493;
+    }
+
     audio {
       display: none;
     }
@@ -51,17 +69,30 @@
 <body>
 
   <h1>🎉 শুভ জন্মদিন, Arpa! 🎂</h1>
+
+  <!-- Play Button -->
+  <button id="play-btn" onclick="playMusic()">🎵 Click to Play Birthday Song</button>
+
+  <!-- Romantic Message -->
   <div class="message" id="wish"></div>
 
+  <!-- Confetti Canvas -->
   <canvas id="confetti"></canvas>
 
-  <!-- Background Music -->
-  <audio autoplay loop>
+  <!-- Audio Player -->
+  <audio id="bg-music" loop>
     <source src="happy-birthday-254480.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
+    // Play music on button click
+    function playMusic() {
+      const audio = document.getElementById('bg-music');
+      audio.play();
+      document.getElementById('play-btn').style.display = 'none'; // hide button
+    }
+
     // Romantic wish message
     const wish = `আজকের দিনে তুমি এসেছিলে পৃথিবীতে,
 যেন সূর্য তার আলো ছড়িয়ে দিয়েছে আমার হৃদয়ে।
@@ -69,7 +100,7 @@
 তোমার ভালোবাসা আমার জীবন।
 
 শুভ জন্মদিন, Arpa —
-তুমি আমার হৃদয়ের চিরন্তন সুর।`;
+তুমি আমার হৃদয়ের চিরন্তন সুর। i love you babe ❤️`;
 
     // Typing effect
     const el = document.getElementById("wish");
@@ -84,7 +115,7 @@
       }
     }
     window.onload = () => {
-      setTimeout(typeWriter, 2000);
+      setTimeout(typeWriter, 1500);
     };
 
     // Confetti effect
